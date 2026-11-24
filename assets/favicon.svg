@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Belvia Finance">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0B1D3A"/>
+      <stop offset="1" stop-color="#1D3E73"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="url(#g)"/>
+  <rect x="5.5" y="5.5" width="53" height="53" rx="10" fill="none" stroke="#DFB867" stroke-opacity="0.5" stroke-width="1.5"/>
+  <path d="M13 48H51M17 43V27M25 43V27M33 43V27M41 43V27M47 43V27M11 27L32 12L53 27H11Z"
+        fill="none" stroke="#DFB867" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

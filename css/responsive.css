@@ -1,0 +1,977 @@
+/* ==========================================================================
+   BELVIA FINANCE — FEUILLE RESPONSIVE DÉDIÉE
+   Compatible TOUS les téléphones (320 px → 1024 px), tablettes, desktop, TV.
+   Chargée APRÈS styles.css : elle affine les points de rupture.
+   Points de rupture couverts :
+     1280 / 1180 / 1024 / 900 / 820 / 768 / 720 / 662 / 600 / 560 / 480 / 430 / 390 / 360 / 320
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   GARDE-FOUS GLOBAUX ANTI-DÉBORDEMENT (tous les écrans)
+   -------------------------------------------------------------------------- */
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+img,
+svg,
+video,
+canvas,
+table {
+  max-width: 100%;
+  height: auto;
+}
+
+
+/* Césure uniquement sur les blocs de texte longs, jamais sur les libellés
+   de navigation, boutons ou pastilles (qui doivent rester sur une ligne). */
+p,
+li,
+td,
+th,
+.review-quote,
+.section-sub,
+.hero-subtitle,
+.faq-answer {
+  overflow-wrap: break-word;
+}
+
+.main-nav a,
+.main-nav,
+.btn,
+.lang-switcher-btn,
+.filter-chip,
+.type-pill,
+.verified-pill,
+.mini-lang-btn,
+.faq-question,
+.brand-name,
+.brand-sub,
+.stat-box strong,
+.flag-badge,
+.country-code-pill,
+.label,
+.form-group label,
+.ticker-item {
+  word-break: normal;
+  overflow-wrap: normal;
+  hyphens: none;
+}
+
+/* Les conteneurs souples ne doivent jamais forcer la largeur de la page */
+.header-inner,
+.topbar-inner,
+.footer-grid,
+.hero-grid,
+.simulator-wrapper,
+.hq-grid,
+.form-grid,
+.loans-grid,
+.steps-grid,
+.reviews-grid,
+.eu-lang-grid,
+.trust-score-big,
+.slider-header,
+.hq-address-overlay,
+.review-top,
+.review-footer-meta {
+  min-width: 0;
+}
+
+.header-inner > *,
+.hero-grid > *,
+.simulator-wrapper > *,
+.hq-grid > *,
+.footer-grid > *,
+.form-grid > *,
+.loans-grid > *,
+.steps-grid > *,
+.reviews-grid > * {
+  min-width: 0;
+}
+
+/* Champs de saisie : jamais plus larges que leur conteneur (évite le zoom iOS) */
+input,
+select,
+textarea,
+button {
+  max-width: 100%;
+}
+
+.form-control,
+.lang-search-input {
+  width: 100%;
+  font-size: 16px; /* empêche le zoom automatique sur iOS Safari */
+}
+
+/* Tap targets confortables sur écran tactile */
+@media (hover: none) and (pointer: coarse) {
+  .btn,
+  .type-pill,
+  .filter-chip,
+  .mini-lang-btn,
+  .lang-switcher-btn,
+  .mobile-menu-toggle,
+  .faq-question {
+    min-height: 44px;
+  }
+}
+
+
+/* La pastille d'avis et la carte de confiance entourent le cadre photo */
+.hero-rating-pill {
+  position: static;
+  display: inline-flex;
+  width: fit-content;
+  max-width: 100%;
+  margin-bottom: 14px;
+  white-space: nowrap;
+}
+
+.hero-photo-frame {
+  margin-bottom: 16px;
+}
+
+/* ==========================================================================
+   1. ORDINATEURS PORTABLES & GRANDES TABLETTES — ≤ 1180 px
+   ========================================================================== */
+/* 1181 – 1599 px : navigation compacte (liens sur une seule ligne) */
+@media (max-width: 1599px) {
+  .stat-box strong {
+    font-size: 1.28rem;
+    line-height: 1.25;
+  }
+  .main-nav {
+    gap: 14px;
+  }
+  .main-nav a {
+    font-size: 0.8rem;
+  }
+  .header-actions {
+    gap: 8px;
+    flex-shrink: 0;
+  }
+  .lang-switcher-btn {
+    padding: 8px 11px;
+    font-size: 0.78rem;
+  }
+  .header-actions .btn-primary {
+    padding: 11px 16px;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 1180px) {
+  .container {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  /* Navigation desktop repliée dans le menu burger */
+  .main-nav {
+    display: none;
+  }
+  .mobile-menu-toggle {
+    display: inline-flex;
+  }
+  .hero-grid,
+  .hq-grid {
+    gap: 34px;
+  }
+  .simulator-controls {
+    padding: 36px 30px;
+  }
+  .simulator-result {
+    padding: 36px 30px;
+  }
+  .footer-grid {
+    gap: 30px;
+  }
+}
+
+/* ==========================================================================
+   2. TABLETTES PAYSAGE — ≤ 1024 px
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .main-nav {
+    display: none;
+  }
+  .mobile-menu-toggle {
+    display: inline-flex;
+  }
+  .header-inner {
+    height: 72px;
+    gap: 12px;
+  }
+  /* Le CTA du header reste visible mais compact */
+  .header-actions {
+    gap: 8px;
+    flex-shrink: 0;
+  }
+  .header-actions .btn-primary {
+    padding: 11px 18px;
+    font-size: 0.85rem;
+  }
+  .hero-grid,
+  .simulator-wrapper,
+  .hq-grid {
+    grid-template-columns: 1fr;
+  }
+  .hero-photo-frame img {
+    height: 380px;
+  }
+  .hero-float-card {
+    left: 14px;
+    bottom: 14px;
+    max-width: 300px;
+  }
+  .loans-grid,
+  .reviews-grid,
+  .steps-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .footer-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+  }
+  .reviews-trust-banner {
+    padding: 24px 26px;
+  }
+  .modal-dialog {
+    max-width: 94vw;
+  }
+}
+
+/* ==========================================================================
+   3. PETITES TABLETTES & GRANDS TÉLÉPHONES — ≤ 900 px
+   ========================================================================== */
+@media (max-width: 900px) {
+  .section {
+    padding: 64px 0;
+  }
+  .hero-section {
+    padding: 56px 0 68px;
+  }
+  .hero-stats {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px 14px;
+  }
+  .stat-box strong {
+    font-size: 1.3rem;
+  }
+  .stat-box span {
+    font-size: 0.72rem;
+  }
+  .loan-type-pills {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .hq-image-card img {
+    height: 360px;
+  }
+  .form-container-card {
+    padding: 34px 28px;
+    border-radius: 22px;
+  }
+  .eu-lang-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .form-sim-recap {
+    padding: 14px 16px;
+  }
+}
+
+/* ==========================================================================
+   4. TÉLÉPHONES STANDARD — ≤ 768 px
+   ========================================================================== */
+@media (max-width: 768px) {
+  .topbar {
+    font-size: 0.72rem;
+    padding: 7px 0;
+  }
+  .topbar-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+  .topbar-legal {
+    line-height: 1.45;
+  }
+  .header-inner {
+    height: 66px;
+  }
+  .brand-emblem {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+  }
+  .brand-name {
+    font-size: 1.05rem;
+  }
+  .brand-sub {
+    font-size: 0.58rem;
+    letter-spacing: 0.08em;
+  }
+  /* Sélecteur de langue compact : drapeau + code seulement */
+  .lang-switcher-btn {
+    padding: 8px 10px;
+    gap: 6px;
+    font-size: 0.78rem;
+  }
+  .lang-switcher-btn #activeLangName,
+  .lang-switcher-btn svg {
+    display: none;
+  }
+  .lang-switcher-btn::after {
+    content: "▾";
+    font-size: 0.7rem;
+    margin-left: 2px;
+  }
+  .header-actions .btn-primary {
+    display: none; /* le CTA reste présent dans le menu et le bouton flottant */
+  }
+  .header-actions {
+    width: auto;
+    max-width: 62%;
+    justify-content: flex-end;
+  }
+  .header-actions .lang-switcher-btn {
+    max-width: 100%;
+  }
+  .hero-title {
+    font-size: clamp(1.85rem, 7.4vw, 2.6rem);
+  }
+  .hero-subtitle {
+    font-size: 1rem;
+    margin-bottom: 26px;
+  }
+  .hero-badge {
+    font-size: 0.76rem;
+    padding: 7px 13px;
+  }
+  .hero-cta-group {
+    gap: 10px;
+    margin-bottom: 30px;
+  }
+  .hero-cta-group .btn {
+    flex: 1 1 auto;
+    min-width: 0;
+    padding: 13px 18px;
+    font-size: 0.9rem;
+    white-space: normal;
+    text-align: center;
+  }
+  .hero-photo-frame img {
+    height: 300px;
+  }
+  .hero-float-card {
+    position: static;
+    margin: 14px 0 0;
+    max-width: 100%;
+    width: 100%;
+    padding: 12px 16px;
+  }
+  /* Photo du hero recadrée en portrait sur mobile */
+  .hero-photo-frame img {
+    height: 240px;
+    object-position: 62% 30%;
+  }
+  .hero-rating-pill {
+    margin-bottom: 10px;
+    font-size: 0.78rem;
+    padding: 8px 12px;
+  }
+  .hero-float-card {
+    margin-top: 0;
+  }
+  .hero-rating-pill {
+    right: 10px;
+    top: 10px;
+    font-size: 0.75rem;
+    padding: 8px 12px;
+  }
+  .section {
+    padding: 54px 0;
+  }
+  .stat-box strong {
+    font-size: 1.16rem;
+  }
+  .stat-box span {
+    font-size: 0.72rem;
+  }
+  .section-title {
+    font-size: clamp(1.5rem, 5.6vw, 2rem);
+  }
+  .section-sub {
+    font-size: 0.95rem;
+  }
+  .loans-grid,
+  .reviews-grid,
+  .steps-grid,
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+  .loan-card-media img {
+    height: 190px;
+  }
+  .simulator-controls,
+  .simulator-result,
+  .form-container-card {
+    padding: 26px 20px;
+  }
+  .loan-type-pills {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+  .type-pill {
+    padding: 10px 8px;
+    font-size: 0.78rem;
+  }
+  .slider-header {
+    flex-wrap: wrap;
+    row-gap: 8px;
+  }
+  .slider-input-box {
+    padding: 5px 12px;
+  }
+  .slider-input-box input {
+    width: 92px;
+    font-size: 1rem;
+  }
+  .monthly-big {
+    font-size: clamp(2rem, 9vw, 2.7rem);
+  }
+  .hq-image-card img {
+    height: 280px;
+  }
+  .hq-address-overlay {
+    position: static;
+    margin-top: 0;
+    border-radius: 0;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 16px 18px;
+  }
+  .reviews-trust-banner {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 22px 20px;
+    gap: 16px;
+  }
+  .score-number {
+    font-size: 2.1rem;
+  }
+  .review-filters {
+    gap: 8px;
+  }
+  .filter-chip {
+    font-size: 0.78rem;
+    padding: 8px 12px;
+  }
+  .review-top {
+    flex-wrap: wrap;
+    row-gap: 8px;
+  }
+  .faq-question {
+    padding: 16px 18px;
+    font-size: 0.94rem;
+  }
+  .eu-lang-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .modal-backdrop {
+    padding: 12px;
+  }
+  .modal-dialog {
+    max-height: 92vh;
+    border-radius: 18px;
+  }
+  .modal-header {
+    padding: 16px 18px;
+  }
+  .modal-header h3 {
+    font-size: 1rem;
+  }
+  .modal-body {
+    padding: 16px 18px;
+  }
+  /* Tableau d'amortissement : chaque ligne devient une carte lisible sur mobile */
+  .amort-table-scroll {
+    width: 100%;
+    overflow: visible;
+    margin: 0;
+    padding: 0;
+  }
+  .amort-table,
+  .amort-table tbody,
+  .amort-table tr,
+  .amort-table td {
+    display: block;
+    width: 100%;
+    min-width: 0;
+  }
+  .amort-table thead {
+    display: none;
+  }
+  .amort-table tr {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 4px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+  .amort-table td {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 0;
+    border: none;
+    text-align: right;
+    font-size: 0.84rem;
+    white-space: nowrap;
+    word-break: normal;
+    overflow-wrap: normal;
+  }
+  .amort-table td strong {
+    white-space: nowrap;
+  }
+  .amort-table td::before {
+    content: attr(data-label);
+    flex: 1 1 auto;
+    text-align: left;
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+  .amort-table td.amort-month {
+    grid-column: 1 / -1;
+    justify-content: flex-start;
+    text-align: left;
+    font-weight: 800;
+    color: var(--navy-900);
+    padding-bottom: 2px;
+  }
+  .amort-table td.amort-month::before {
+    display: none;
+  }
+  .floating-apply-cta {
+    right: 12px;
+    bottom: 12px;
+  }
+  .floating-apply-cta .btn {
+    padding: 13px 18px;
+    font-size: 0.88rem;
+  }
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    padding-bottom: 34px;
+  }
+  .site-footer {
+    padding: 52px 0 30px;
+  }
+  .form-submit-btn {
+    max-width: 100%;
+    padding: 16px 22px;
+    font-size: 1rem;
+  }
+  .form-security-badges {
+    gap: 12px;
+    font-size: 0.74rem;
+  }
+}
+
+/* ==========================================================================
+   5. TÉLÉPHONES COMPACTS — ≤ 560 px
+   ========================================================================== */
+@media (max-width: 560px) {
+  .container {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  .header-inner {
+    height: 62px;
+    gap: 8px;
+  }
+  .brand-logo {
+    gap: 8px;
+    min-width: 0;
+  }
+  .brand-emblem {
+    width: 34px;
+    height: 34px;
+    flex-shrink: 0;
+  }
+  .brand-emblem svg {
+    width: 19px;
+    height: 19px;
+  }
+  .brand-name {
+    font-size: 0.94rem;
+    letter-spacing: -0.01em;
+  }
+  .brand-sub {
+    display: none;
+  }
+  .lang-switcher-btn {
+    padding: 7px 8px;
+  }
+  .lang-iso-pill {
+    font-size: 0.66rem;
+    padding: 2px 5px;
+  }
+  .mobile-menu-toggle {
+    width: 38px;
+    height: 38px;
+  }
+  .hero-stats {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px 10px;
+  }
+  .hero-photo-frame {
+    height: 150px;
+    border-radius: 16px;
+  }
+  .hero-title {
+    font-size: clamp(1.6rem, 8vw, 2.15rem);
+  }
+  .hero-cta-group {
+    margin-bottom: 26px;
+  }
+  .section-tag {
+    font-size: 0.66rem;
+    padding: 5px 10px;
+    letter-spacing: 0.06em;
+  }
+  .section-title {
+    letter-spacing: -0.01em;
+  }
+  .hq-check-list li {
+    font-size: 0.92rem;
+    gap: 10px;
+  }
+  .hq-address-overlay {
+    padding: 14px 15px;
+    gap: 10px;
+  }
+  .hq-address-overlay strong {
+    font-size: 0.9rem !important;
+  }
+  .loan-type-pills {
+    grid-template-columns: 1fr;
+  }
+  .monthly-big {
+    font-size: clamp(1.9rem, 10vw, 2.4rem);
+  }
+  .summary-row {
+    flex-wrap: wrap;
+    row-gap: 2px;
+  }
+  .reviews-trust-banner {
+    padding: 18px 16px;
+  }
+  .trust-score-big {
+    gap: 12px;
+  }
+  .review-card,
+  .step-card,
+  .loan-card {
+    border-radius: 16px;
+  }
+  .review-card {
+    padding: 20px;
+  }
+  .step-card {
+    padding: 24px 20px;
+  }
+  .form-container-card {
+    padding: 22px 16px;
+    border-radius: 18px;
+  }
+  .form-sim-recap {
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    gap: 6px;
+  }
+  .consent-row {
+    font-size: 0.8rem;
+    gap: 10px;
+  }
+  .eu-lang-grid {
+    grid-template-columns: 1fr;
+  }
+  .eu-lang-item {
+    padding: 10px 12px;
+  }
+  .modal-header {
+    gap: 10px;
+  }
+  .modal-close {
+    flex-shrink: 0;
+  }
+  .footer-eu-langs {
+    gap: 5px;
+  }
+  .mini-lang-btn {
+    padding: 5px 7px;
+    font-size: 0.68rem;
+    min-height: 32px;
+  }
+  /* CTA flottant pleine largeur : on réserve la place pour ne rien masquer */
+  body {
+    padding-bottom: 76px;
+  }
+  .floating-apply-cta {
+    left: 12px;
+    right: 12px;
+    bottom: max(12px, env(safe-area-inset-bottom));
+  }
+  .floating-apply-cta .btn {
+    width: 100%;
+    justify-content: center;
+  }
+  .live-ticker-bar {
+    padding: 10px 0;
+  }
+  .ticker-item {
+    font-size: 0.76rem;
+  }
+  .ticker-track {
+    gap: 26px;
+  }
+}
+
+/* ==========================================================================
+   6. PETITS TÉLÉPHONES (iPhone SE, Galaxy A0x, vieux Android) — ≤ 390 px
+   ========================================================================== */
+@media (max-width: 390px) {
+  .container {
+    padding-left: 13px;
+    padding-right: 13px;
+  }
+  .brand-name {
+    font-size: 0.86rem;
+  }
+  .header-inner {
+    height: 58px;
+  }
+  .lang-switcher-btn::after {
+    display: none;
+  }
+  .hero-section {
+    padding: 42px 0 52px;
+  }
+  .hero-title {
+    font-size: 1.52rem;
+    line-height: 1.2;
+  }
+  .hero-subtitle {
+    font-size: 0.92rem;
+  }
+  .hero-badge {
+    font-size: 0.7rem;
+    padding: 6px 11px;
+    gap: 6px;
+  }
+  .btn {
+    padding: 12px 18px;
+    font-size: 0.86rem;
+  }
+  .btn-lg {
+    padding: 13px 20px;
+    font-size: 0.92rem;
+  }
+  .hero-cta-group .btn {
+    white-space: normal;
+  }
+  .section {
+    padding: 46px 0;
+  }
+  .section-title {
+    font-size: 1.42rem;
+  }
+  .stat-box strong {
+    font-size: 1.1rem;
+  }
+  .stat-box span {
+    font-size: 0.68rem;
+  }
+  .review-card {
+    padding: 17px;
+  }
+  .reviewer-avatar,
+  .reviewer-initials {
+    width: 44px;
+    height: 44px;
+    font-size: 0.9rem;
+  }
+  .verified-pill {
+    font-size: 0.66rem;
+    padding: 3px 8px;
+  }
+  .score-number {
+    font-size: 1.8rem;
+  }
+  .form-container-card {
+    padding: 20px 14px;
+  }
+  .form-control {
+    padding: 12px 13px;
+  }
+  .modal-dialog {
+    max-height: 94vh;
+  }
+  .modal-header {
+    padding: 14px 14px;
+  }
+  .modal-body {
+    padding: 14px;
+  }
+  .amort-table tr {
+    padding: 10px 0;
+  }
+  .amort-table td {
+    font-size: 0.78rem;
+  }
+}
+
+/* ==========================================================================
+   7. TRÈS PETITS ÉCRANS (320 px) & ZOOM TEXTE IMPORTANT
+   ========================================================================== */
+@media (max-width: 340px) {
+  .container {
+    padding-left: 11px;
+    padding-right: 11px;
+  }
+  .brand-name {
+    font-size: 0.8rem;
+  }
+  .brand-emblem {
+    width: 30px;
+    height: 30px;
+  }
+  .hero-title {
+    font-size: 1.36rem;
+  }
+  .hero-stats {
+    grid-template-columns: 1fr;
+  }
+  .lang-iso-pill {
+    font-size: 0.62rem;
+  }
+  .mobile-menu-toggle {
+    width: 34px;
+    height: 34px;
+  }
+  .header-actions {
+    gap: 6px;
+  }
+  .lang-switcher-btn {
+    padding: 6px 7px;
+  }
+  .hero-float-card {
+    padding: 11px 13px;
+    gap: 10px;
+  }
+  .float-icon-circle {
+    width: 36px;
+    height: 36px;
+  }
+  .hero-float-card strong {
+    font-size: 0.84rem;
+  }
+  .hero-float-card span {
+    font-size: 0.72rem;
+  }
+  .section-title {
+    font-size: 1.28rem;
+  }
+  .filter-chip {
+    font-size: 0.72rem;
+    padding: 7px 10px;
+  }
+  .step-num {
+    width: 42px;
+    height: 42px;
+    font-size: 1rem;
+  }
+}
+
+/* ==========================================================================
+   8. APPAREILS EN MODE PAYSAGE PEU HAUT (téléphone couché)
+   ========================================================================== */
+@media (max-height: 520px) and (orientation: landscape) {
+  .site-header {
+    position: static;
+  }
+  .mobile-nav-drawer.open {
+    max-height: 60vh;
+    overflow-y: auto;
+  }
+  .modal-dialog {
+    max-height: 96vh;
+  }
+  .hero-section {
+    padding: 32px 0 40px;
+  }
+}
+
+/* ==========================================================================
+   9. TRÈS GRANDS ÉCRANS — ≥ 1600 px
+   ========================================================================== */
+@media (min-width: 1600px) {
+  :root {
+    --container-max: 1360px;
+  }
+  .hero-photo-frame img {
+    height: 520px;
+  }
+  .section {
+    padding: 104px 0;
+  }
+}
+
+/* ==========================================================================
+   10. IMPRESSION
+   ========================================================================== */
+@media print {
+  .site-header,
+  .topbar,
+  .live-ticker-bar,
+  .floating-apply-cta,
+  .mobile-nav-drawer,
+  .modal-backdrop,
+  .review-filters {
+    display: none !important;
+  }
+  body {
+    background: #fff;
+    color: #000;
+  }
+  .section {
+    padding: 18px 0;
+    break-inside: avoid;
+  }
+}
+
+/* ==========================================================================
+   11. ACCESSIBILITÉ — MOUVEMENT RÉDUIT
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .ticker-track {
+    animation: none !important;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
